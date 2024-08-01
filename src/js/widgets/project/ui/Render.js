@@ -400,6 +400,7 @@ export default class Render {
   clearListTasks() {
     this.project.tasks.innerHTML = '';
   }
+
   scrollTop(value) {
     const top = value || 0;
 
