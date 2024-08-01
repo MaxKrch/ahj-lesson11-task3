@@ -92,7 +92,7 @@ export default class Controller {
 
     this.streams.clicksModalOuterBody.stream$ = fromEvent(
       this.render.modal.container,
-      'pointerdown',
+      'mousedown',
     ).pipe(
       throttleTime(100),
       pluck('target'),
