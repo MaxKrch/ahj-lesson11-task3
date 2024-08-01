@@ -457,6 +457,7 @@ export default class Render {
   hideModalSection() {
     this.modal.container.classList.add('hidden-item');
     this.scrollTop(this.top);
+    this.top = null;
   }
 
   clearModalProject() {

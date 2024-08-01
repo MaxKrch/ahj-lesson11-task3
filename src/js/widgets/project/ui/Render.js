@@ -31,6 +31,7 @@ export default class Render {
         },
       },
     };
+    this.top = null;
   }
 
   renderApp(container) {
@@ -332,7 +333,9 @@ export default class Render {
   }
 
   showModal() {
+    this.top = window.scrollY;
     this.modal.container.classList.remove('hidden-item');
+    this.scrollTop();
   }
 
   hideModalTask() {
@@ -344,6 +347,8 @@ export default class Render {
 
   hideModal() {
     this.modal.container.classList.add('hidden-item');
+    this.scrollTop(this.top);
+    this.top = null;
   }
 
   clearModalTask() {
@@ -394,5 +399,13 @@ export default class Render {
 
   clearListTasks() {
     this.project.tasks.innerHTML = '';
+  }
+  scrollTop(value) {
+    const top = value || 0;
+
+    window.scrollTo({
+      top,
+      behavior: 'smooth',
+    });
   }
 }
