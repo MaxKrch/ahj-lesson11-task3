@@ -80,9 +80,7 @@ const addNewProject = (state, { project }) => {
   }
 
   const newState = cloningState(state);
-  const id = newState.nextId;
-
-  project.id = id;
+  project.id = newState.nextId;
   newState.nextId += 1;
   newState.projects.add(project);
 
