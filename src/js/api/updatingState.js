@@ -80,12 +80,13 @@ const addNewProject = (state, { project }) => {
   }
 
   const newState = cloningState(state);
-  let clonedProjects;
+  const clonedProjects = [];
 
   try {
-    clonedProjects = Array.from(newState.projects);
+    const tempClonedProjects = Array.from(newState.projects);
+
+    tempClonedProjects.forEach(item => clonedProjects.push(item))
   } catch(err) {
-    clonedProjects = [];
     console.log(`Не смог итерировать список проектов: ${newState.projects}`)
   }
 
