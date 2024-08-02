@@ -80,7 +80,14 @@ const addNewProject = (state, { project }) => {
   }
 
   const newState = cloningState(state);
-  const clonedProjects = Array.from(newState.projects)
+  let clonedProjects;
+
+  try {
+    clonedProjects = Array.from(newState.projects);
+  } catch(err) {
+    clonedProjects = [];
+    console.log(`Не смог итерировать список проектов: ${newState.projects}`)
+  }
 
   clonedProjects.forEach(project => {
     project.actived = false;
