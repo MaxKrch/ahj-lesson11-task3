@@ -80,9 +80,18 @@ const addNewProject = (state, { project }) => {
   }
 
   const newState = cloningState(state);
+  const clonedProjects = Array.from(newState.projects)
+
+  clonedProjects.forEach(project => {
+    project.actived = false;
+  })
+  project.actived = true;
+
+  const newArrayProjects = [project, ...clonedProjects];
+
   project.id = newState.nextId;
   newState.nextId += 1;
-  newState.projects.add(project);
+  newState.projects = new Set(newArrayProjects);
 
   return newState;
 };
